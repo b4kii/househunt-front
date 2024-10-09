@@ -1,11 +1,23 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
+  selector: 'hh-register',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
+  constructor(private fb: FormBuilder) {}
 
+  registerForm = this.fb.nonNullable.group({
+    email: ["", Validators.required],
+    password: ["", Validators.required],
+    repeatPassword: ["", Validators.required],
+    phone: ["", Validators.required],
+  });
+
+  protected onSubmit() {
+    console.log(this.registerForm.getRawValue());
+  }
 }
