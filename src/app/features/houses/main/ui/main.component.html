@@ -1,0 +1,30 @@
+<hh-main-layout>
+  <section class="h-full w-full outline outline-1 outline-gray-300">
+    <!--    TODO: Delte fixed height-->
+    <div class="border border-1 border-lime-300 h-[300px]">
+      filters
+    </div>
+    <div class="pt-2">
+      <!--          TODO: Show after applying filters - but idk how-->
+      <div class="card">
+        <p-tabmenu
+          [model]="items"
+          [activeItem]="activeItem"
+          (activeItemChange)="onActiveItemChange($event)">
+          <ng-template pTemplate="item" let-item>
+            <ng-container>
+              <a [routerLink]="item.route" class="p-menuitem-link">
+                <span [class]="item.icon"></span>
+                <span class="ml-2">
+                        {{ item.label }}
+                    </span>
+              </a>
+            </ng-container>
+          </ng-template>
+        </p-tabmenu>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+</hh-main-layout>

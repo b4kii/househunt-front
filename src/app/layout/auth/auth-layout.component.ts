@@ -7,7 +7,13 @@ import {RouterOutlet} from '@angular/router';
   imports: [
     RouterOutlet
   ],
-  templateUrl: './auth-layout.component.html',
+  template: `
+    <div class="h-screen flex justify-center items-center mx-auto">
+      <div class="flex flex-col justify-center items-center gap-[128px]">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  `,
 })
 export class AuthLayoutComponent {
 }
