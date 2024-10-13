@@ -6,6 +6,7 @@
     </div>
     <div class="pt-2">
       <!--          TODO: Show after applying filters - but idk how-->
+      <!--          TODO: Tab link is not filling full space, so there is a "glitch", when you click outside the link, active tab changes but router is not working-->
       <div class="card">
         <p-tabmenu
           [model]="items"
@@ -16,8 +17,8 @@
               <a [routerLink]="item.route" class="p-menuitem-link">
                 <span [class]="item.icon"></span>
                 <span class="ml-2">
-                        {{ item.label }}
-                    </span>
+                  {{ item.label }}
+                </span>
               </a>
             </ng-container>
           </ng-template>

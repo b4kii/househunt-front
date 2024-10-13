@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { NgxMaskDirective } from "ngx-mask";
 
 import { RouterLink, RouterOutlet } from "@angular/router";
 import { MainLayoutComponent } from "../../../layout/main/main-layout.component";
@@ -13,7 +12,6 @@ import { MenuItem } from "primeng/api";
   standalone: true,
   imports: [
     FormsModule,
-    NgxMaskDirective,
     RouterLink,
     MainLayoutComponent,
     RouterOutlet,
@@ -23,15 +21,7 @@ import { MenuItem } from "primeng/api";
   templateUrl: "./ui/main.component.html",
 })
 export class MainComponent implements OnInit {
-  // items: MenuItem[] = [
-  //   { label: "Dashboard", icon: "pi pi-home" },
-  //   { label: "Transactions", icon: "pi pi-chart-line" },
-  //   { label: "Products", icon: "pi pi-list" },
-  // ];
-
   items: MenuItem[] = [];
-
-  // activeItem: MenuItem = this.items[0];
 
   activeItem: MenuItem | undefined;
 

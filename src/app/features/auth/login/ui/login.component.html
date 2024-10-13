@@ -1,36 +1,41 @@
 <!--TEMP LAYOUT-->
 <hh-auth-layout>
-<h1>Login</h1>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
-  <div class="flex flex-col">
-    <!--    <label for="email">Email</label>-->
-    <input id="email" type="text" formControlName="email" placeholder="email">
-    <hh-input-error>
-      @if (loginForm.controls.email.invalid && (loginForm.controls.email.touched || loginForm.controls.email.dirty)) {
-      @if (loginForm.controls.email.errors?.["required"]) {
-      <span>Email is required</span>
-      } @else if (loginForm.controls.email.errors?.["email"]) {
-      <span>Invalid email</span>
-      }
-      }
-    </hh-input-error>
-  </div>
-  <div class="flex flex-col">
-    <input id="password" type="text" formControlName="password" placeholder="password">
-    <hh-input-error>
-      @if (loginForm.controls.password.invalid && (loginForm.controls.password.touched || loginForm.controls.password.dirty)) {
-      @if (loginForm.controls.password.errors?.["required"]) {
-      <span>Password is required</span>
-      }
-      <!--      TODO: Add validation form server-->
-      <!--      @else if (loginForm.controls.password.errors?.["password"]) {-->
-      <!--          <span>Invalid password</span>-->
-      <!--        }-->
-      }
+  <h1 class="py-[128px] text-4xl">Logowanie</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+    <div class="flex flex-col">
+      <input pInputText id="email" type="text" formControlName="email" placeholder="email"
+             [ngClass]="checkValidation('email') ? 'ng-invalid ng-dirty' : ''">
+      <hh-input-error>
+        @if (checkValidation("email")) {
+          @if (hasError("email", "required")) {
+            <span>Email is required</span>
+          } @else if (loginForm.controls.email.errors?.["email"]) {
+            <span>Invalid email</span>
+          }
+        }
+      </hh-input-error>
+    </div>
+    <div class="flex flex-col">
+      <p-password formControlName="password" placeholder="password" [feedback]="false" [toggleMask]="true"
+                  [ngClass]="checkValidation('password') ? 'ng-invalid ng-dirty' : ''">
+      ></p-password>
+      <hh-input-error>
+        @if (checkValidation("password")) {
+          @if (hasError("password", "required")) {
+            <span>Password is required</span>
+          }
+          <!--      TODO: Add validation form server-->
+            <!--      @else if (loginForm.controls.password.errors?.["password"]) {-->
+            <!--          <span>Invalid password</span>-->
+            <!--        }-->
+        }
       </hh-input-error>
     </div>
     <div>
-      <button class="w-full">Register</button>
+      <button pButton class="w-full">Zaloguj się</button>
     </div>
   </form>
+  <p-divider></p-divider>
+  <a routerLink="/register" class="underline">Nie masz konta?</a>
+
 </hh-auth-layout>
