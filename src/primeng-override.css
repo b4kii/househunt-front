@@ -1,8 +1,12 @@
 .p-tabmenu-nav {
-    background-color: #f4f4f5;
-    padding: .25rem;
-    border-radius: .5rem;
-    width: max-content;
+  background-color: #f4f4f5;
+  padding: .25rem;
+  border-radius: .5rem;
+  width: max-content;
+}
+
+.auth .p-tabmenu-nav {
+  width: 100%;
 }
 
 .p-tabmenuitem-active {

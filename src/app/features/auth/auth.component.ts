@@ -20,26 +20,30 @@ import { AuthLayoutComponent } from '../../layout/auth/auth-layout.component';
   ],
   // templateUrl: "./ui/main.component.html",
   template: `
-<!--    <div class="h-screen flex flex-col items-center justify-center">-->
-    <div class="h-screen grid grid-rows-[1fr_1fr]">
-      <div class="card">
-        <p-tabmenu
-          [model]="items"
-          [activeItem]="activeItem"
-          (activeItemChange)="onActiveItemChange($event)"
-        >
-          <ng-template pTemplate="item" let-item>
-            <ng-container>
-              <a [routerLink]="item.route" class="p-menuitem-link">
+    <!--    <div class="h-screen flex flex-col items-center justify-center">-->
+    <div class="auth h-screen grid grid-cols-[300px] grid-rows-[200px_1fr] gap-12 justify-center">
+      <div class="self-end justify-self-center">
+        <div class="card">
+          <p-tabmenu
+            [model]="items"
+            [activeItem]="activeItem"
+            (activeItemChange)="onActiveItemChange($event)"
+          >
+            <ng-template pTemplate="item" let-item>
+              <ng-container>
+                <a [routerLink]="item.route" class="p-menuitem-link">
                 <span>
                   {{ item.label }}
                 </span>
-              </a>
-            </ng-container>
-          </ng-template>
-        </p-tabmenu>
+                </a>
+              </ng-container>
+            </ng-template>
+          </p-tabmenu>
+        </div>
       </div>
-      <router-outlet></router-outlet>
+      <div class="flex justify-center">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   `,
 })

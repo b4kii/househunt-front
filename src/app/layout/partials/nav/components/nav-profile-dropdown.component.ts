@@ -44,12 +44,12 @@ export class NavProfileDropdownComponent implements OnInit {
           {
             label: "Logowanie",
             icon: "pi pi-sign-in",
-            route: "/login",
+            route: "/auth/login",
           },
           {
             label: "Rejestracja",
             icon: "pi pi-user-plus",
-            route: "/register",
+            route: "/auth/register",
           },
           {
             label: "Wyloguj się - AA",
