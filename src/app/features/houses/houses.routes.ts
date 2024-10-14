@@ -16,7 +16,6 @@ export const homeRoute: Route[] = [
         path: "houses-newest",
         component: HousesNewestComponent
       },
-
     ]
   },
 ];

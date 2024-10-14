@@ -1,62 +1,29 @@
-<!--TEMP LAYOUT-->
-<h1>Register</h1>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
-  <div class="flex flex-col">
-<!--    <label for="email">Email</label>-->
-    <input id="email" type="text" formControlName="email" placeholder="email">
-    <hh-input-error>
-      @if (registerForm.controls.email.invalid && (registerForm.controls.email.touched || registerForm.controls.email.dirty)) {
-        @if (registerForm.controls.email.errors?.["required"]) {
-          <span>Email is required</span>
-        } @else if (registerForm.controls.email.errors?.["email"]) {
-          <span>Invalid email</span>
-        }
-      }
-    </hh-input-error>
-  </div>
-  <div class="flex flex-col">
-    <input id="password" type="text" formControlName="password" placeholder="password">
-    <hh-input-error>
-      @if (registerForm.controls.password.invalid && (registerForm.controls.password.touched || registerForm.controls.password.dirty)) {
-        @if (registerForm.controls.password.errors?.["required"]) {
-          <span>Password is required</span>
-        }
-      <!--      TODO: Add validation form server-->
-      <!--      @else if (registerForm.controls.password.errors?.["password"]) {-->
-<!--          <span>Invalid password</span>-->
-<!--        }-->
-      }
-    </hh-input-error>
-  </div>
-  <div class="flex flex-col">
-    <input id="repeatPassword" type="password" formControlName="repeatPassword" placeholder="repeat password">
-    <hh-input-error>
-      @if (registerForm.controls.repeatPassword.invalid && (registerForm.controls.repeatPassword.touched || registerForm.controls.repeatPassword.dirty)) {
-        @if (registerForm.controls.repeatPassword.errors?.["required"]) {
-          <span>Repeat password is required</span>
-        }
-      <!--      TODO: Add validation form server-->
-<!--      @else if (registerForm.controls.repeatPassword.errors?.["repeatPassword"]) {-->
-<!--          <span>Invalid email</span>-->
-<!--        }-->
-      }
-    </hh-input-error>
-  </div>
-  <div class="flex flex-col">
-    <input id="phone" type="text" formControlName="phone" placeholder="phone">
-    <hh-input-error>
-      @if (registerForm.controls.phone.invalid && (registerForm.controls.phone.touched || registerForm.controls.phone.dirty)) {
-        @if (registerForm.controls.phone.errors?.["required"]) {
-          <span>Phone is required</span>
-        }
-<!--      TODO: Add validation form server-->
-<!--      @else if (registerForm.controls.phone.errors?.["phone"]) {-->
-<!--          <span>Invalid email</span>-->
-<!--        }-->
-      }
-    </hh-input-error>
-  </div>
-  <div>
-    <button class="w-full">Register</button>
-  </div>
-</form>
+<hh-auth-layout>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="flex flex-col gap-4">
+    <div class="flex flex-col">
+      <input pInputText id="email" type="text" formControlName="email" placeholder="email" [ngClass]="checkValidation('email') ? 'ng-invalid ng-dirty' : ''">
+      <hh-form-error [controlInput]="formProps('email')"></hh-form-error>
+    </div>
+    <div class="flex flex-col">
+      <p-password formControlName="password" placeholder="password" [feedback]="false" [toggleMask]="true"
+          [ngClass]="checkValidation('password') ? 'ng-invalid ng-dirty' : ''"
+      >
+      </p-password>
+      <hh-form-error [controlInput]="formProps('password')"></hh-form-error>
+    </div>
+    <div class="flex flex-col">
+      <p-password formControlName="password" placeholder="repeat password" [feedback]="false" [toggleMask]="true"
+                  [ngClass]="checkValidation('repeatPassword') ? 'ng-invalid ng-dirty' : ''"
+      >
+      </p-password>
+      <hh-form-error [controlInput]="formProps('repeatPassword')"></hh-form-error>
+    </div>
+    <div class="flex flex-col">
+      <input pInputText id="phone" type="text" formControlName="phone" placeholder="phone" [ngClass]="checkValidation('phone') ? 'ng-invalid ng-dirty' : ''" >
+      <hh-form-error [controlInput]="formProps('phone')"></hh-form-error>
+    </div>
+    <div>
+      <button pButton class="w-full">Zarejestruj</button>
+    </div>
+  </form>
+</hh-auth-layout>

@@ -1,11 +1,10 @@
-import { Component } from "@angular/core";
-import { InputErrorComponent } from "../../../shared/components/input-error/input-error.component";
+import { Component, inject } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
-} from "@angular/forms";
+} from '@angular/forms';
 import { AuthLayoutComponent } from "../../../layout/auth/auth-layout.component";
 import { InputTextModule } from "primeng/inputtext";
 import { PasswordModule } from "primeng/password";
@@ -13,12 +12,16 @@ import { NgClass } from "@angular/common";
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { RouterLink } from '@angular/router';
+import { FormValidationService } from '../../../core/services/form-validation/form-validation.service';
+import { FormErrorComponent } from '../../../shared/components/form-error/form-error';
+import { ControlInput } from '../../../shared/types/validation.types';
+import { LoginForm } from '../../../shared/types/form.types';
 
 @Component({
   selector: "hh-login",
   standalone: true,
   imports: [
-    InputErrorComponent,
+    FormErrorComponent,
     ReactiveFormsModule,
     AuthLayoutComponent,
     InputTextModule,
@@ -32,8 +35,9 @@ import { RouterLink } from '@angular/router';
 })
 export class LoginComponent {
   protected isFormSubmitted: boolean = false;
+  protected formValidationService = inject(FormValidationService);
 
-  loginForm = new FormGroup({
+  protected loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, Validators.email]),
     password: new FormControl("", Validators.required),
   });
@@ -45,21 +49,18 @@ export class LoginComponent {
     this.loginForm.markAsTouched();
   }
 
-  protected checkValidation(
-    key: keyof typeof this.loginForm.controls
-  ): boolean {
-    return (
-      this.loginForm.controls[key].invalid &&
-      (this.loginForm.controls[key].touched ||
-        this.isFormSubmitted ||
-        this.loginForm.controls[key].dirty)
+  protected checkValidation(key: string) {
+    return this.formValidationService.checkValidation(
+      key,
+      this.isFormSubmitted,
+      this.loginForm
     );
   }
 
-  protected hasError(
-    formKey: keyof typeof this.loginForm.controls,
-    errorKey: string
-  ): boolean {
-    return this.loginForm.controls[formKey].errors?.[errorKey];
+  formProps(key: keyof LoginForm): ControlInput {
+    return {
+      control: this.loginForm.controls[key],
+      isFormSubmitted: this.isFormSubmitted
+    };
   }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from "@angular/router";
 import { ButtonModule } from "primeng/button";
 import { MenuModule } from "primeng/menu";
-import { MenuItem } from "primeng/api";
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: "hh-nav-profile-dropdown",
@@ -10,7 +10,9 @@ import { MenuItem } from "primeng/api";
   imports: [RouterLink, ButtonModule, MenuModule],
   template: `
     <div class="card flex justify-center">
-      <p-button (click)="menu.toggle($event)" icon="pi pi-user" />
+<!--      TODO: add some avatar maybe-->
+<!--      <p-button (click)="menu.toggle($event)" icon="pi pi-user" />-->
+      <p-button (click)="menu.toggle($event)" label="DH"/>
       <p-menu #menu [model]="items" [popup]="true">
         <ng-template pTemplate="item" let-item>
           <ng-container>
@@ -33,14 +35,28 @@ export class NavProfileDropdownComponent implements OnInit {
         label: "Twoje konto",
         items: [
           {
+            label: "Profil - AA",
+            icon: "pi pi-user",
+            command: () => {
+              console.log("Logout action");
+            }
+          },
+          {
             label: "Logowanie",
             icon: "pi pi-sign-in",
-            route: "/login"
+            route: "/login",
           },
           {
             label: "Rejestracja",
             icon: "pi pi-user-plus",
-            route: "/register"
+            route: "/register",
+          },
+          {
+            label: "Wyloguj się - AA",
+            icon: "pi pi-power-off",
+            command: () => {
+              console.log("Logout action");
+            }
           },
         ],
       },

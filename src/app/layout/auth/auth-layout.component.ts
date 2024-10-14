@@ -8,10 +8,8 @@ import {RouterOutlet} from '@angular/router';
     RouterOutlet
   ],
   template: `
-    <div class="h-screen flex justify-center">
-      <div class="flex flex-col items-center">
-        <ng-content></ng-content>
-      </div>
+    <div class="flex flex-col items-center">
+      <ng-content></ng-content>
     </div>
   `,
 })

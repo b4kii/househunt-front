@@ -1,17 +1,21 @@
 import {Route} from "@angular/router";
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
+import { AuthComponent } from './auth.component';
 
-export const registerRoute: Route[] = [
+export const authRoutes: Route[] = [
   {
     path: "",
-    component: RegisterComponent
-  },
-];
-
-export const loginRoute: Route[] = [
-  {
-    path: "",
-    component: LoginComponent
-  },
+    component: AuthComponent,
+    children: [
+      {
+        path: "login",
+        component: LoginComponent
+      },
+      {
+        path: "register",
+        component: RegisterComponent
+      },
+    ]
+  }
 ];
