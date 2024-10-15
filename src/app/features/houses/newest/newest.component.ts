@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [
   ],
-  templateUrl: './ui/houses-newest.component.html',
+  templateUrl: './ui/newest.component.html',
 })
 export class HousesNewestComponent {
 }

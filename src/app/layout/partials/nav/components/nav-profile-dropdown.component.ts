@@ -12,8 +12,8 @@ import { MenuItem } from 'primeng/api';
     <div class="card flex justify-center">
 <!--      TODO: add some avatar maybe-->
 <!--      <p-button (click)="menu.toggle($event)" icon="pi pi-user" />-->
-      <p-button (click)="menu.toggle($event)" label="DH"/>
-      <p-menu #menu [model]="items" [popup]="true">
+      <p-button (click)="menu.toggle($event)" label="DH" />
+      <p-menu #menu [model]="items" [popup]="true" appendTo="body">
         <ng-template pTemplate="item" let-item>
             <a [routerLink]="item.route" class="p-menu-item-link">
               <span [class]="item.icon"></span>

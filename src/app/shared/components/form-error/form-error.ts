@@ -20,6 +20,7 @@ import { NgIf } from '@angular/common';
 export class FormErrorComponent {
   @Input() controlInput!: ControlInput;
 
+
   protected formValidationService = inject(FormValidationService);
 
   get errorMessage() {

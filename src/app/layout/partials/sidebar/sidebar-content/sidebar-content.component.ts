@@ -7,7 +7,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   imports: [RouterOutlet, RouterLink],
   template: `
     <div class="py-4 px-6 flex flex-col gap-4">
-      @for (item of sidebarItems; track item.route) {
+      @for (item of sidebarItems; track item.label) {
         <a [routerLink]="item.route" class="block bg-gray-100 py-1 rounded-lg">
         <span class="px-4">
           {{ item.label }}
