@@ -29,8 +29,8 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      { label: "Najnowsze", icon: "pi pi-hourglass", route: "/houses-newest" },
-      { label: "Blisko Ciebie", icon: "pi pi-map-marker", route: "/houses-closest" },
+      { label: "Najnowsze", icon: "pi pi-hourglass", route: "/newest" },
+      { label: "Blisko Ciebie", icon: "pi pi-map-marker", route: "/closest" },
       { label: "Wyszukiwanie", icon: "pi pi-search", route: "/search"},
     ];
 

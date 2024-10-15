@@ -10,7 +10,7 @@ import { ButtonModule } from 'primeng/button';
   imports: [RouterOutlet, SidebarContentComponent, Drawer, ButtonModule],
   template: `
     <div
-      class="hidden lg:block w-[300px] h-full border-r border-1 border-gray-300 px-8 py-4">
+      class="hidden lg:block lg:w-[300px] lg:h-full lg:border-r lg:border-1 lg:border-gray-300 ">
       <hh-sidebar-content />
     </div>
     <div class="card flex justify-center">
@@ -35,7 +35,6 @@ export class SidebarComponent {
   @HostListener('window:resize', ['$event.target.innerWidth'])
   onResize(width: number) {
     if (width >= 1024 && this.active) {
-      // this.active = false;
       this.activeChange()
     }
   }

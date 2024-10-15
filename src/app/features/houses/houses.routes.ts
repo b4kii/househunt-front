@@ -9,11 +9,11 @@ export const homeRoute: Route[] = [
     component: MainComponent,
     children: [
       {
-        path: "houses-closest",
+        path: "closest",
         component: HousesClosestComponent
       },
       {
-        path: "houses-newest",
+        path: "newest",
         component: HousesNewestComponent
       },
     ]
