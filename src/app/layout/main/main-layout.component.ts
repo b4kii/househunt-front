@@ -15,9 +15,10 @@ import {SidebarComponent} from '../partials/sidebar/sidebar.component';
   ],
   template: `
     <div class="min-h-screen flex flex-col">
-      <hh-nav></hh-nav>
+      <hh-nav [active]="sidebarActive" (activeChangeEvent)="changeVisibility()"></hh-nav>
       <div class='relative flex flex-grow'>
-        <hh-sidebar></hh-sidebar>
+<!--        <hh-sidebar></hh-sidebar>-->
+        <hh-sidebar [active]="sidebarActive" (activeChangeEvent)="changeVisibility()"></hh-sidebar>
         <main class='flex-1 p-6'>
           <ng-content></ng-content>
         </main>
@@ -26,4 +27,12 @@ import {SidebarComponent} from '../partials/sidebar/sidebar.component';
   `,
 })
 export class MainLayoutComponent {
+  // just for testing, but im gonna leave this maybe to remember about sharing state between parent and child
+  // next time ill have to use subject from service
+  sidebarActive: boolean = false;
+
+  changeVisibility() {
+    console.log(this.sidebarActive);
+    this.sidebarActive = !this.sidebarActive;
+  }
 }

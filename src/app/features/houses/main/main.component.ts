@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MainLayoutComponent } from "../../../layout/main/main-layout.component";
 import { ButtonModule } from "primeng/button";
 import { TabMenuModule } from "primeng/tabmenu";
@@ -21,18 +21,32 @@ import { MenuItem } from "primeng/api";
   templateUrl: "./ui/main.component.html",
 })
 export class MainComponent implements OnInit {
-  items: MenuItem[] = [];
+  protected router = inject(Router);
 
-  activeItem: MenuItem | undefined;
+  protected items: MenuItem[] = [];
+
+  protected activeItem: MenuItem | undefined;
 
   ngOnInit() {
     this.items = [
       { label: "Najnowsze", icon: "pi pi-hourglass", route: "/houses-newest" },
       { label: "Blisko Ciebie", icon: "pi pi-map-marker", route: "/houses-closest" },
-      { label: "Wyszukiwanie", icon: "pi pi-search", route: "/"},
+      { label: "Wyszukiwanie", icon: "pi pi-search", route: "/search"},
     ];
 
-    this.activeItem = this.items[0];
+    this.setActiveItem();
+
+    this.router.events.subscribe(() => {
+      this.setActiveItem();
+    });
+  }
+
+  setActiveItem() {
+    const currentRoute = this.router.url;
+
+    const matchingItem = this.items.find(item => item["route"] === currentRoute);
+
+    this.activeItem = matchingItem ? matchingItem : undefined;
   }
 
   onActiveItemChange(event: MenuItem) {

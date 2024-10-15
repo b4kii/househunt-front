@@ -15,12 +15,10 @@ import { MenuItem } from 'primeng/api';
       <p-button (click)="menu.toggle($event)" label="DH"/>
       <p-menu #menu [model]="items" [popup]="true">
         <ng-template pTemplate="item" let-item>
-          <ng-container>
             <a [routerLink]="item.route" class="p-menu-item-link">
               <span [class]="item.icon"></span>
               <span class="ml-2">{{ item.label }}</span>
             </a>
-          </ng-container>
         </ng-template>
       </p-menu>
     </div>

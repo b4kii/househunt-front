@@ -3,26 +3,14 @@
     <div class="flex flex-col">
       <input pInputText id="email" type="text" formControlName="email" placeholder="email"
              [ngClass]="checkValidation('email') ? 'ng-invalid ng-dirty' : ''">
-<!--      <hh-form-error [control]="loginForm.controls.email" [messages]="messages" [isFormSubmitted]="isFormSubmitted"></hh-form-error>-->
-          <hh-form-error [controlInput]="formProps('email')"></hh-form-error>
+      <hh-form-error [controlInput]="formProps('email')"></hh-form-error>
     </div>
     <div class="flex flex-col">
       <p-password formControlName="password" placeholder="password" [feedback]="false" [toggleMask]="true"
                   [ngClass]="checkValidation('password') ? 'ng-invalid ng-dirty' : ''">
-      ></p-password>
+        >
+      </p-password>
       <hh-form-error [controlInput]="formProps('password')"></hh-form-error>
-<!--      <hh-form-error [control]="loginForm.controls.password" [messages]="messages" [isFormSubmitted]="isFormSubmitted"></hh-form-error>-->
-<!--      <hh-form-error>-->
-<!--        @if (checkValidation("password")) {-->
-<!--          @if (hasError("password", "required")) {-->
-<!--            <span>Hasło jest wymagane</span>-->
-<!--          }-->
-<!--          &lt;!&ndash;      TODO: Add validation form server&ndash;&gt;-->
-<!--            &lt;!&ndash;      @else if (loginForm.controls.password.errors?.["password"]) {&ndash;&gt;-->
-<!--            &lt;!&ndash;          <span>Invalid password</span>&ndash;&gt;-->
-<!--            &lt;!&ndash;        }&ndash;&gt;-->
-<!--        }-->
-<!--      </hh-form-error>-->
     </div>
     <div>
       <button pButton class="w-full">Zaloguj się</button>

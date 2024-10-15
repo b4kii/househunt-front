@@ -1,7 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 
-import { RouterLink, RouterOutlet } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from "primeng/button";
 import { TabMenuModule } from "primeng/tabmenu";
 import { MenuItem } from "primeng/api";
@@ -18,10 +18,11 @@ import { AuthLayoutComponent } from '../../layout/auth/auth-layout.component';
     TabMenuModule,
     AuthLayoutComponent,
   ],
-  // templateUrl: "./ui/main.component.html",
   template: `
     <!--    <div class="h-screen flex flex-col items-center justify-center">-->
-    <div class="auth h-screen grid grid-cols-[300px] grid-rows-[200px_1fr] gap-12 justify-center">
+    <!--    <div class="auth h-screen grid grid-cols-[300px] grid-rows-[300px_1fr] gap-12 justify-center">-->
+    <div class="auth h-screen grid grid-cols-[300px] grid-rows-[100px_100px_1fr] gap-12 justify-center">
+      <a routerLink="/" class="self-end justify-self-center text-5xl">House Hunt</a>
       <div class="self-end justify-self-center">
         <div class="card">
           <p-tabmenu
@@ -48,9 +49,11 @@ import { AuthLayoutComponent } from '../../layout/auth/auth-layout.component';
   `,
 })
 export class AuthComponent implements OnInit {
-  items: MenuItem[] = [];
+  protected router = inject(Router);
 
+  items: MenuItem[] = [];
   activeItem: MenuItem | undefined;
+
 
   ngOnInit() {
     this.items = [
@@ -59,7 +62,19 @@ export class AuthComponent implements OnInit {
       },
     ];
 
-    this.activeItem = this.items[0];
+    this.setActiveItem();
+
+    this.router.events.subscribe(() => {
+      this.setActiveItem();
+    });
+  }
+
+  setActiveItem() {
+    const currentRoute = this.router.url;
+
+    const matchingItem = this.items.find(item => item["route"] === currentRoute);
+
+    this.activeItem = matchingItem ? matchingItem : undefined;
   }
 
   onActiveItemChange(event: MenuItem) {
