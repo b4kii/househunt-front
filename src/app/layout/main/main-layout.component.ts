@@ -3,23 +3,28 @@ import {RouterOutlet} from '@angular/router';
 import {NavComponent} from '../partials/nav/nav.component';
 import {FooterComponent} from '../partials/footer/footer.component';
 import {SidebarComponent} from '../partials/sidebar/sidebar.component';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @Component({
-  selector: 'hh-main-layout',
+  selector: "hh-main-layout",
   standalone: true,
   imports: [
     RouterOutlet,
     NavComponent,
     FooterComponent,
     SidebarComponent,
+    ScrollPanelModule,
   ],
   template: `
     <div class="min-h-screen flex flex-col">
-      <hh-nav [active]="sidebarActive" (activeChangeEvent)="changeVisibility()"></hh-nav>
-      <div class='relative flex flex-grow'>
-<!--        <hh-sidebar></hh-sidebar>-->
-        <hh-sidebar [active]="sidebarActive" (activeChangeEvent)="changeVisibility()"></hh-sidebar>
-        <main class='flex-1 p-6'>
+      <hh-nav
+        [active]="sidebarActive"
+        (activeChangeEvent)="changeVisibility()" />
+      <div class="relative flex flex-grow">
+        <hh-sidebar
+          [active]="sidebarActive"
+          (activeChangeEvent)="changeVisibility()" />
+        <main class='flex-1 p-6 overflow-y-auto max-h-[calc(100vh-64px)]'>
           <ng-content></ng-content>
         </main>
       </div>
