@@ -1,9 +1,12 @@
-<div class="card py-4">
+<div class="card py-2">
   <p-carousel
     [value]="products"
     [numVisible]="3"
     [numScroll]="1"
-    [responsiveOptions]="responsiveOptions">
+    [responsiveOptions]="responsiveOptions"
+    [circular]="true"
+    autoplayInterval="3000"
+  >
     <ng-template let-product pTemplate="item">
       <div class="border border-surface rounded-border m-2 p-4">
         <a href="#" class="block">

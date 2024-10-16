@@ -78,6 +78,30 @@ export class CarouselNumScrollDemo implements OnInit {
       inventoryStatus: "INSTOCK",
       rating: 4,
     },
+    {
+      id: "1005",
+      code: "h456wer53",
+      name: "Green Watch",
+      description: "Eco-friendly green watch with bamboo accents.",
+      image: "bamboo-watch.jpg",
+      price: 68,
+      category: "Accessories",
+      quantity: 22,
+      inventoryStatus: "INSTOCK",
+      rating: 4,
+    },
+    {
+      id: "1006",
+      code: "h456wer53",
+      name: "Green Watch",
+      description: "Eco-friendly green watch with bamboo accents.",
+      image: "bamboo-watch.jpg",
+      price: 68,
+      category: "Accessories",
+      quantity: 22,
+      inventoryStatus: "INSTOCK",
+      rating: 4,
+    },
   ];
 
   responsiveOptions: any[] | undefined;

@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 
-import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
+import {  Router, RouterLink, RouterOutlet } from '@angular/router';
 import { ButtonModule } from "primeng/button";
 import { TabMenuModule } from "primeng/tabmenu";
 import { MenuItem } from "primeng/api";
@@ -54,12 +54,10 @@ export class AuthComponent implements OnInit {
   items: MenuItem[] = [];
   activeItem: MenuItem | undefined;
 
-
   ngOnInit() {
     this.items = [
       { label: "Logowanie", route: "/auth/login" },
-      { label: "Rejestracja", route: "/auth/register",
-      },
+      { label: "Rejestracja", route: "/auth/register" },
     ];
 
     this.setActiveItem();
@@ -72,7 +70,9 @@ export class AuthComponent implements OnInit {
   setActiveItem() {
     const currentRoute = this.router.url;
 
-    const matchingItem = this.items.find(item => item["route"] === currentRoute);
+    const matchingItem = this.items.find(
+      item => item["route"] === currentRoute
+    );
 
     this.activeItem = matchingItem ? matchingItem : undefined;
   }

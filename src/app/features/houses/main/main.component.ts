@@ -6,6 +6,7 @@ import { MainLayoutComponent } from "../../../layout/main/main-layout.component"
 import { ButtonModule } from "primeng/button";
 import { TabMenuModule } from "primeng/tabmenu";
 import { MenuItem } from "primeng/api";
+import { FiltersComponent } from '../components/filters/filters.component';
 
 @Component({
   selector: "hh-main",
@@ -17,6 +18,7 @@ import { MenuItem } from "primeng/api";
     RouterOutlet,
     ButtonModule,
     TabMenuModule,
+    FiltersComponent,
   ],
   templateUrl: "./ui/main.component.html",
 })
@@ -31,7 +33,7 @@ export class MainComponent implements OnInit {
     this.items = [
       { label: "Najnowsze", icon: "pi pi-hourglass", route: "/newest" },
       { label: "Blisko Ciebie", icon: "pi pi-map-marker", route: "/closest" },
-      { label: "Wyszukiwanie", icon: "pi pi-search", route: "/search"},
+      { label: "Wyszukiwanie", icon: "pi pi-search", route: "/search" },
     ];
 
     this.setActiveItem();
@@ -44,7 +46,9 @@ export class MainComponent implements OnInit {
   setActiveItem() {
     const currentRoute = this.router.url;
 
-    const matchingItem = this.items.find(item => item["route"] === currentRoute);
+    const matchingItem = this.items.find(
+      item => item["route"] === currentRoute
+    );
 
     this.activeItem = matchingItem ? matchingItem : undefined;
   }
