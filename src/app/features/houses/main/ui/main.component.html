@@ -2,7 +2,7 @@
 <!--  <section class="h-full w-full outline outline-1 outline-gray-300 overflow-hidden">-->
 <!--    <section>-->
     <!--    TODO: Delte fixed height-->
-    <div class="border border-1 border-lime-300 h-[200px]">
+    <div class="border border-1 border-lime-300 h-[500px]">
       <hh-listing-filters />
     </div>
     <div class="pt-2">
@@ -12,7 +12,8 @@
         <p-tabmenu
           [model]="items"
           [activeItem]="activeItem"
-          (activeItemChange)="onActiveItemChange($event)">
+        >
+<!--                    (activeItemChange)="onActiveItemChange($event)"-->
           <ng-template pTemplate="item" let-item>
             <ng-container>
               <a [routerLink]="item.route" class="p-menuitem-link">

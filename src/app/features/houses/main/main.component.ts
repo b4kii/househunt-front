@@ -43,7 +43,7 @@ export class MainComponent implements OnInit {
     });
   }
 
-  setActiveItem() {
+  protected setActiveItem() {
     const currentRoute = this.router.url;
 
     const matchingItem = this.items.find(
@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
     this.activeItem = matchingItem ? matchingItem : undefined;
   }
 
-  onActiveItemChange(event: MenuItem) {
+  protected onActiveItemChange(event: MenuItem) {
     this.activeItem = event;
   }
 }
