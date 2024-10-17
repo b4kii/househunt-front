@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { NgClass } from '@angular/common';
 
@@ -9,7 +9,6 @@ import { NgClass } from '@angular/common';
   template: `
     <div class="py-4 px-6 flex flex-col gap-4">
       @for (item of sidebarItems; track item.label) {
-        <!--        <a [routerLink]="item.route" class="block bg-gray-100 py-1 rounded-lg">-->
         <a
           [routerLink]="item.route"
           [ngClass]="['py-1 rounded-lg', item.active ? 'bg-gray-100' : '']">
@@ -23,6 +22,11 @@ import { NgClass } from '@angular/common';
 })
 export class SidebarContentComponent implements OnInit {
   protected router = inject(Router);
+  @Output() activeChangeEvent: EventEmitter<boolean> = new EventEmitter<boolean>;
+
+  activeChange() {
+    this.activeChangeEvent.emit();
+  }
 
   protected sidebarItems = [
     { label: "Stwórz", route: "/closest", active: false },
@@ -49,6 +53,7 @@ export class SidebarContentComponent implements OnInit {
 
     if (matchingItem) {
       matchingItem.active = true;
+      this.activeChange();
     }
   }
 }

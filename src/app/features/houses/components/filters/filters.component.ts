@@ -39,6 +39,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
           type="text"
           placeholder="Lokalizacja"
           formControlName="localization" />
+<!--        TODO: Extract this to separate components maybe-->
         <div class="flex gap-10">
           <p-fieldset legend="Cena">
             <div class="flex gap-4 py-4">

@@ -15,11 +15,10 @@ import { ButtonModule } from 'primeng/button';
     </div>
     <div class="card flex justify-center">
       <p-drawer
-        header="Drawer"
         [(visible)]="active"
         (onHide)="activeChange()"
-        styleClass="md:!w-80 lg:!w-[30rem]">
-        <hh-sidebar-content />
+        styleClass="md:!w-80 lg:!w-[30rem] !p-0">
+        <hh-sidebar-content (activeChangeEvent)="activeChange()" />
       </p-drawer>
     </div>
   `,

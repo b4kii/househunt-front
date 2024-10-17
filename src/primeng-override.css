@@ -37,6 +37,13 @@
   width: 100%;
 }
 
+.p-drawer-header {
+  justify-content: end;
+}
+.p-drawer-content {
+  padding: 0;
+}
+
 @media screen and (width <= 768px) {
   .p-tabmenu-nav {
     margin-inline: auto;
