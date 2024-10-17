@@ -18,7 +18,7 @@ import { ButtonModule } from 'primeng/button';
         [(visible)]="active"
         (onHide)="activeChange()"
         styleClass="md:!w-80 lg:!w-[30rem] !p-0">
-        <hh-sidebar-content (activeChangeEvent)="activeChange()" />
+        <hh-sidebar-content [active]="active" (activeChangeEvent)="activeChange()" />
       </p-drawer>
     </div>
   `,

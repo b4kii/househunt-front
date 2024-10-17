@@ -22,6 +22,7 @@ import { NgClass } from '@angular/common';
 })
 export class SidebarContentComponent implements OnInit {
   protected router = inject(Router);
+  @Input() active!: boolean;
   @Output() activeChangeEvent: EventEmitter<boolean> = new EventEmitter<boolean>;
 
   activeChange() {
@@ -53,7 +54,9 @@ export class SidebarContentComponent implements OnInit {
 
     if (matchingItem) {
       matchingItem.active = true;
-      this.activeChange();
+      if (this.active) {
+        this.activeChange();
+      }
     }
   }
 }
